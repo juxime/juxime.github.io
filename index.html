@@ -71,6 +71,69 @@
     .personal-video { margin: 56px 0 0; width: min(100%, 640px); }
     .personal-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
     .personal-video figcaption { margin-top: 10px; font-size: 16px; line-height: 1.6; }
+    .research-paper { padding-top: 4px; }
+    .paper-title {
+      margin: 0 0 14px;
+      color: #263f4b;
+      font: 550 clamp(23px, 2.5vw, 28px)/1.4 var(--sans);
+      letter-spacing: -.025em;
+      text-wrap: pretty;
+    }
+    .paper-title .math-group { font-family: var(--serif); font-size: 1.12em; font-weight: 400; }
+    .math-group { white-space: nowrap; }
+    .math-group sub { font-size: .7em; line-height: 0; }
+    .paper-meta { margin: 0 0 20px; color: var(--muted); font: 16px/1.7 var(--sans); }
+    .paper-meta .separator { margin-inline: 8px; }
+    .paper-meta a { color: inherit; text-decoration-color: #b9c5c6; }
+    .paper-meta a:hover { color: var(--accent); text-decoration-color: currentColor; }
+    .paper-resources { position: relative; font: 16px/1.5 var(--sans); }
+    .paper-arxiv { position: absolute; top: 0; left: 0; display: inline-flex; align-items: center; min-height: 44px; }
+    .paper-abstract summary {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      min-height: 44px;
+      margin-left: 156px;
+      color: var(--accent);
+      cursor: pointer;
+      list-style: none;
+      border-radius: 2px;
+    }
+    .paper-abstract summary::-webkit-details-marker { display: none; }
+    .paper-abstract summary::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid currentColor;
+      transition: transform .16s ease;
+    }
+    .paper-abstract[open] summary::before { transform: rotate(90deg); }
+    .paper-abstract summary:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+    .paper-abstract summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+    .abstract-content {
+      margin-top: 16px;
+      padding: 19px 24px;
+      border-left: 2px solid #b8c9c8;
+      border-radius: 0 5px 5px 0;
+      background: var(--wash);
+      color: var(--ink);
+      font: 17px/1.85 var(--serif);
+      text-wrap: pretty;
+    }
+    .abstract-content p { margin: 0; }
+    .abstract-content math { font-size: 1em; }
+    @media (max-width: 600px) {
+      .paper-meta { font-size: 15px; }
+      .paper-meta .separator { margin-inline: 5px; }
+      .paper-abstract summary { margin-left: 148px; }
+      .abstract-content { padding: 16px 18px; font-size: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .paper-abstract summary::before { transition: none; }
+    }
     .notes-list { margin: 0; padding-left: 24px; }
     .notes-list li { padding-left: 4px; margin-bottom: 16px; }
     .notes-list li:last-child { margin-bottom: 0; }
@@ -149,7 +212,19 @@
 
       <section class="page" id="page-research" data-page="research" aria-labelledby="research-heading" hidden>
         <h2 class="sr-only" id="research-heading">Research</h2>
-        <p>Coming soon!</p>
+        <article class="research-paper" aria-labelledby="privileged-paper-title">
+          <h3 class="paper-title" id="privileged-paper-title">Privileged <span class="math-group"><i>SL</i><sub>3</sub></span>-local systems are motivic</h3>
+          <p class="paper-meta"><time datetime="2026">2026</time><span class="separator" aria-hidden="true">&middot;</span>Joint with <a href="https://cwu4570.github.io">Charlie Wu</a></p>
+          <div class="paper-resources">
+            <a class="paper-arxiv" href="https://arxiv.org/abs/2610.17173v1">arXiv version</a>
+            <details class="paper-abstract">
+              <summary>Abstract</summary>
+              <div class="abstract-content">
+                <p>Let <math><mi>X</mi></math> be a smooth projective variety over the complex numbers, and let <math><mi mathvariant="double-struck">V</mi></math> be an irreducible privileged <span class="math-group">SL<sub>3</sub></span>-local system on <math><mi>X</mi></math> in the sense of Esnault and Groechenig. We show that <math><mi mathvariant="double-struck">V</mi></math> is of geometric origin. We also give an example of a privileged but non-rigid <span class="math-group">SL<sub>3</sub></span>-local system.</p>
+              </div>
+            </details>
+          </div>
+        </article>
       </section>
 
       <section class="page" id="page-notes" data-page="notes" aria-labelledby="notes-heading" hidden>
